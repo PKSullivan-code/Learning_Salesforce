@@ -1,0 +1,104 @@
+public class Learning_Salesforce {
+
+    //Learning_Salesforce.firstmethod();
+    public static void firstmethod(){
+        integer t = 2;
+        integer y = 3;
+        integer i = t+y;
+        system.debug('123' + i);
+    }
+    public static void CreateAccount(){
+        Lead l = new Lead();
+        l.Company = 'My New Company';
+        l.FirstName = 'Test';
+        l.LastName = 'Tester';
+        l.Status = 'Open';
+        insert l;  
+    }
+    
+    public static void CreateContact(){
+        Contact c = new Contact();
+        c.LastName = 'Chin';
+        c.FirstName = 'Crimson';
+        c.Salutation = 'Mr.';
+        c.Title = 'Definitely Not CEO';
+        insert c;
+    }
+    
+    public static void secondmethod(){
+        string t = '2';
+        string y = '3';
+        
+        system.debug('321' + t + y + t);
+    }
+    public static integer thirdmethod(){
+        string s = '3';
+        integer i = 30;
+        integer is = integer.valueOf(s)+i;
+        return is;
+    }
+    public static integer fourthmethod(){
+        integer i = 1;
+        integer w = 1;
+        integer iw = i + w;
+        return iw;
+        
+    }
+    public static void fifthmethod(){
+        
+        string s = 'Giv ';
+        string pls = 'jaw ';
+        string jaw = 'pls';
+        string t = s + pls + jaw;
+        system.debug('pls ' + t);
+    }
+    public static void CreateList(){
+        // Create a list
+        List<Integer> ls1 = new List<Integer>();
+        // Add two integers to the list
+        ls1.add(1);
+        ls1.add(2);
+        system.debug(ls1 + ' debuglist1');
+        
+    }
+    public static void CreateListString(){
+        List<String> ls2 = new List<String>();
+        ls2.add('THANK');
+        ls2.add('YOU');
+        system.debug(ls2 + ' Nick' + ls2[1]);
+    }
+    public static void MyQuery(){
+        List<Account> accts = [SELECT Name from Account where Name = 'GenePoint']; //select-from-where
+        system.debug('actlist' + accts);
+        //system.debug('list3' + accts[2]);
+    }
+    public static void MyLoopFirst(){
+        List<Account> acctlist1 = [SELECT Id from Account];
+        Account acctlist2 = [SELECT Id, Name from Account where Id = '0015e00000AAG29AAH'];
+        Account acctlist3 = [SELECT AnnualRevenue from Account where Id = '0015e00000AAG29AAH'];
+        List<Account> acctlist4 = [SELECT Id from Account];
+        List<Account> acctlist5 = [SELECT Id from Account];
+        List<Account> acctlist6 = [SELECT Id from Account];
+        List<Account> acctlist7 = [SELECT Id from Account];
+        List<Account> acctlist8 = [SELECT Id from Account];
+        List<Account> acctlist9 = [SELECT Name from Account];
+        
+        acctlist2.Name = 'Big';
+        update acctlist2;
+        
+        long bigNum = 3000000000L; //broken because integers follow runescape rules 2.147b MAX CASH
+        acctlist3.AnnualRevenue = bigNum;
+        update acctlist3;
+        
+        //for (Account i : acctlist1) {
+        //    System.debug(i);
+        //}
+        
+        //for (Account o : acctlist9) {
+        //    system.debug(o);
+        //}
+        
+        //system.debug('Acctlist1' + acctlist1);
+    }
+    
+}
