@@ -1,0 +1,27 @@
+trigger Contact_Trigger on Contact (before insert, before update) {
+    if (Trigger.isInsert) {
+        if(Trigger.isBefore) {
+            for(Contact c : Trigger.new) {
+                c.Title = 'CEO';
+                if(c.Text__c != null && c.Text1__c != null){
+                    c.Combined_Text__C = c.Text__c + c.Text1__c;
+                }
+            }
+        }
+    }
+    
+    if (Trigger.isUpdate) {
+        if(Trigger.isBefore) {
+            for(Contact c : Trigger.new) {
+                //Access the "old" record by its ID in Trigger.oldMap
+                Contact oldCon = Trigger.oldMap.get(c.Id);
+                if(oldCon.Email != c.Email) {
+                    c.Old_Email__c = oldCon.Email;
+                }
+                if(c.Text__c != null && c.Text1__c != null){
+                    c.Combined_Text__C = c.Text__c + c.Text1__c;
+                }
+            }
+        }
+    }
+}
