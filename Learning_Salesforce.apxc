@@ -1,5 +1,5 @@
 public class Learning_Salesforce {
-
+    
     //Learning_Salesforce.firstmethod();
     public static void firstmethod(){
         integer t = 2;
@@ -99,6 +99,30 @@ public class Learning_Salesforce {
         //}
         
         //system.debug('Acctlist1' + acctlist1);
+        //
+        //
+        
     }
-    
+    public static void MapTest() {
+        List<Contact> contacts = [Select ID, AccountID From Contact where AccountId != null];
+        map<Id, Contact> m = new map<Id, Contact>();
+        for(Contact c : contacts){
+            m.put(c.AccountId, c);
+        }
+        system.debug('Map1' + m);
+        system.debug('MapIndex' + m.get(contacts[0].AccountID));
+    }
+    public static void ListMap(){
+        list<Contact> contacts = [Select Id, AccountId from Contact];
+        list<Account> accts = [Select Id from Account];
+        for(Contact c : contacts){
+            for(Account a : accts){
+                if(c.AccountId == a.Id){
+                    system.debug('Account ' + a);
+                    system.debug('Contact' + c);
+                }
+            }
+        }
+    }
 }
+
